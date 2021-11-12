@@ -1,4 +1,5 @@
 from server import loadClubs, loadCompetitions
+from tests.test_unit.conf_test import client
 
 
 class TestAuthentication:
@@ -18,7 +19,7 @@ class TestAuthentication:
         """
         response = client.post('/showSummary', data={'email': self.bad_email_club})
         assert response.status_code == 200
-        assert b'bad email' in response.data
+        assert b'wrong email' in response.data
 
     def test_if_good_email_for_authentication(self, client):
         """
