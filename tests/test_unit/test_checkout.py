@@ -13,8 +13,11 @@ class TestPurchase:
         self.competitions = loadCompetitions()
 
     def test_more_purchase_than_point(self, client):
-        club = self.clubs[0]
-        points = int(club['points']) + 5
+        """
+        test if the user enters more than point available
+        """
+        club = self.clubs[1]
+        points = int(club['points']) + 2
         response = client.post('/purchasePlaces', data=dict(
             competition=self.competitions[0]['name'],
             club=club['name'],
@@ -28,7 +31,10 @@ class TestPurchase:
         assert response.status_code == 200
 
     def test_purchase_ok_if_number_point_ok(self, client):
-        club = self.clubs[0]
+        """
+        test if the user enters a good number
+        """
+        club = self.clubs[1]
         points = int(club['points']) - 2
         response = client.post('/purchasePlaces', data=dict(
             competition=self.competitions[0]['name'],
