@@ -15,22 +15,24 @@
         {% endfor %}
        </ul>
     {% endif%}
-    Points available: {{club['points']}}
-    <h3>Competitions:</h3>
-    <ul>
-        {% for comp in competitions%}
-        <li>
-            {{comp['name']}}<br />
-            Date: {{comp['date']}}</br>
-            Number of Places: {{comp['numberOfPlaces']}}
-            {%if comp['numberOfPlaces']|int >0%}
-            <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
-            {%endif%}
-        </li>
-        <hr />
-        {% endfor %}
-    </ul>
-    {%endwith%}
+        Points available: {{ club['points'] }}
+        <h3>Competitions:</h3>
+        <ul>
+            {% for comp in competitions %}
+                <li>
+                    {{ comp['name'] }}<br/>
+                    Date: {{ comp['date'] }}</br>
+                    Number of Places: {{ comp['numberOfPlaces'] }}
+                    {% if comp['numberOfPlaces']|int >0 and not comp['completed'] %}
+                        <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
+                    {% elif comp['completed'] %}
+                        <p>competition is finished</p>
+                    {% endif %}
+                </li>
+                <hr/>
+            {% endfor %}
+        </ul>
+    {% endwith %}
 
 </body>
 </html>
