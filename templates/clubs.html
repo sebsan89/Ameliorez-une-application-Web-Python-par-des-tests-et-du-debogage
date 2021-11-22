@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUDLFT Clubs</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        table {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<h2>Welcome in clubs table</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th colspan="2">View Clubs</th>
+    </tr>
+    </thead>
+    <tbody style="border: black">
+    {% for club in clubs %}
+        <tr>
+            <td>{{ club['name'] }}</td>
+            <td>{{ club['points'] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a href="/">Return in sign in page</a>
+</body>
+</html>
