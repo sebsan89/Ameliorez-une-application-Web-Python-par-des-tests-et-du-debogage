@@ -37,15 +37,40 @@
 
 4. Current Setup
 
-    The app is powered by [JSON files](https://www.tutorialspoint.com/json/json_quick_guide.htm). This is to get around having a DB until we actually need one. The main ones are:
-     
-    * competitions.json - list of competitions
-    * clubs.json - list of clubs with relevant information. You can look here to see what email addresses the app will accept for login.
+   The app is powered by [JSON files](https://www.tutorialspoint.com/json/json_quick_guide.htm). This is to get around
+   having a DB until we actually need one. The main ones are:
+
+   * competitions.json - list of competitions
+   * clubs.json - list of clubs with relevant information. You can look here to see what email addresses the app will
+     accept for login.
 
 5. Testing
 
-    You are free to use whatever testing framework you like-the main thing is that you can show what tests you are using.
+   - The tests are created with the Pytest module, you will find below the results of the tests.
 
-    We also like to show how well we're testing, so there's a module called 
-    [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) you should add to your project.
+   ![](covtest.png)
 
+   - You can also run the tests via the command :
+
+   `pytest`
+
+   - and for the coverage :
+
+   `pytest --cov=. --cov-report=html`
+
+6. Performance
+
+   - The performance tests are done via Locust.
+
+   - As for the tests, you will find enclosed the results, otherwise to do the tests yourself, you must enter the
+     following command:
+
+   `cd tests`
+
+   `locust`
+
+   - The Locust server will start at http://localhost:8089/, you must also start the Django test server.
+
+   - You can enter any value you like, only the Host must be the exact address of the Django test server
+
+   ![](locust.png)
